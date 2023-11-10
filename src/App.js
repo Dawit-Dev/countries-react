@@ -1,76 +1,51 @@
-import React, { useState, useEffect } from "react";
-import Card from "./Card";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMoon } from "@fortawesome/free-solid-svg-icons";
-import countriesAll from "./countriesAll.json";
-import "./App.css";
+import React, { useState } from 'react'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import allCountries from './allCountries.json'
+import Home from './pages/Home'
+import Details from './pages/Details'
+import useLocalStorage from 'use-local-storage'
+import Header from './components/Header'
+import './App.css'
 
 function App() {
-  const regions = [...new Set(countriesAll.map((country) => country.region))];
-  const [countries, setCountries] = useState(countriesAll);
-  const [regionsFilter, setRegionsFilter] = useState("All regions");
-  const [countriesFilter, setCountriesFilter] = useState("");
+	const defaultDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+	const [countryDetail, setCountryDetail] = useState({})
+	const [theme, setTheme] = useLocalStorage(
+		'theme',
+		defaultDark ? 'dark' : 'light'
+	)
 
-  useEffect(() => {
-    console.log(countriesFilter);
-    setCountries(
-      countriesAll.filter(
-        (country) =>
-          (regionsFilter === "All regions"
-            || country.region
-              .toLocaleLowerCase()
-              .includes(regionsFilter.toLocaleLowerCase()))
-          && (countriesFilter === ""
-            || country.name
-              .toLocaleLowerCase()
-              .includes(countriesFilter.toLocaleLowerCase()))
-      )
-    );
-  }, [regionsFilter, countriesFilter]);
-
-  return (
-    <>
-      <Heading />
-      <div className="form-row m-5">
-        <input
-          id="input"
-          className="form-control, search col-md-9 m-2"
-          type="search"
-          placeholder="Search..."
-          onChange={(e) => setCountriesFilter(e.target.value)}
-        />
-
-        <select
-          id="select"
-          onChange={(e) => setRegionsFilter(e.target.value)}
-          className="form-control col-md-2 m-2"
-        >
-          <option>All regions</option>
-          {regions.map((region) => (
-            <option>{region}</option>
-          ))}
-        </select>
-      </div>
-      <div className="card-deck p-1">
-        {countries.map((country, index) => (
-          <Card data={country} index={index} />
-        ))}
-      </div>
-    </>
-  );
+	return (
+		<main data-theme={theme} className='main'>
+			<Header theme={theme} setTheme={setTheme} />
+			<BrowserRouter>
+				<Routes>
+					<Route
+						exact
+						path='/'
+						element={
+							<Home
+								theme={theme}
+								setCountryDetail={setCountryDetail}
+								allCountries={allCountries}
+							/>
+						}
+					/>
+					<Route
+						exact
+						path='/details'
+						element={
+							<Details
+								countryDetail={countryDetail}
+								setCountryDetail={setCountryDetail}
+								allCountries={allCountries}
+							/>
+						}
+					/>
+				</Routes>
+			</BrowserRouter>
+		</main>
+	)
 }
 
-const Heading = () => {
-  return (
-    <div className="app-header">
-      <header className="brand">Where in the world?</header>
-
-      <button className="theme-toggler">
-        <FontAwesomeIcon icon={faMoon} />
-        Dark Mode
-      </button>
-    </div>
-  );
-};
-
-export default App;
+export default App

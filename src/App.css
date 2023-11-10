@@ -1,119 +1,332 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --app-background: hsl(0, 0%, 98%);
+    --elements-bg: hsl(0, 0%, 100%);
+    --elements-bg: #eeeeee;
+    --text-primary: hsl(200, 15%, 8%);
+    --input: hsl(0, 0%, 52%);
+}
+
+[data-theme='dark'] {
+    --app-background: hsl(207, 26%, 17%);
+    --elements-bg: hsl(209, 23%, 22%);
+    --text-primary: hsl(0, 0%, 100%);
+    --input: hsl(0, 0%, 98%);
+}
+
+.main {
+    background-color: var(--app-background);
+    position: relative;
+    min-height: 100vh;
+    padding-bottom: 2rem;
+}
+
 .app-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: hsl(209, 23%, 22%);
-  height: 64px;
-  padding: 0 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--elements-bg);
+    height: 64px;
+    padding: 0 4%;
 }
 
 .brand {
-  color: white;
-
+    color: var(--text-primary);
+    font-weight: 600;
 }
 
 .theme-toggler {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5rem;
-  cursor: pointer;
-  text-decoration: none;
-  border: none;
-  background-color: hsl(209, 23%, 22%);
-  color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    text-decoration: none;
+    border: none;
+    background-color: var(--elements-bg);
+    color: var(--text-primary);
 }
 
-.fa-solid {
-  color: white;
-  font-size: 1.5rem;
+.inputs-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    margin: 2.5rem 0;
 }
 
-.card-deck {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  margin: 1rem;
-  gap: 1rem;
-  width: 100%;
-}
-.App-header {
-  min-height: 8vh;
-  display: flex;
-  /* flex-direction: column; */
-  /* align-items: center; */
-  /* justify-content: center; */
-  font-size: calc(30px + 2vmin);
-  padding: 20px;
-  width: 100%;
-  background-color: rgb(27, 26, 26);
-  color: white;
-}
-.form-control {
-  padding: 10px;
-  margin: 1rem;
-  /* margin: 20px; */
-  border-radius: 12px;
-  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
-    rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
-}
-/* ###### */
-.form-row {
-  margin: 1rem;
-  justify-content: space-between;
-}
-.search {
-  width: 20%;
-}
-/* ####### */
-
-.App-link {
-  color: #61dafb;
+.search-container {
+    background-color: var(--elements-bg);
+    border-radius: 7px;
+    width: 90%;
+    margin: auto;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.search-icon {
+    position: absolute;
+    padding: 0.85rem;
+    font-size: 1rem;
+    color: var(--input);
 }
 
-.card-body {
-  border: none;
-  width: 260px;
-  min-height: 320px;
-  margin: 20px;
-  border-radius: 12px;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-}
-.card-body:hover {
-  box-shadow: none;
-  border: 5px solid rgb(61, 60, 60);
-  transition: 0.7s;
+.search-bar {
+    width: 100%;
+    font-size: 1rem;
+    border: 1px solid var(--elements-bg);
+    border-radius: 4px;
+    color: var(--input);
+    background-color: var(--elements-bg);
+    margin-left: 0.25rem;
+    padding: 0.85rem 0.4rem 0.85rem 2rem;
 }
 
-.card-body img {
-  border-top-left-radius: 12px;
-  border-top-right-radius: 12px;
-  width: 260px;
-  height: 140px;
+::placeholder {
+    color: var(--text-primary);
+}
+
+textarea:focus,
+input:focus,
+select:focus {
+    outline: none;
+}
+
+*:focus {
+    outline: none;
+}
+
+.select-wrapper {
+    padding-right: 0.5rem;
+    border-radius: 7px;
+    background: var(--elements-bg);
+    margin: 2rem 0 0 5%;
+}
+
+select {
+    color: var(--text-primary);
+    background: var(--elements-bg);
+    padding: 0.85rem;
+    border-radius: 7px;
+    font-size: 1rem;
+    border: none;
+    outline: none;
+    scroll-behavior: smooth;
+}
+
+select#xyz {
+    border: 0;
+    outline: none;
+}
+
+select option {
+    background-color: var(--elements-bg);
+}
+
+option:checked {
+    background-color: var(--app-background);
+}
+
+option:hover {
+    background-color: var(--app-background);
+}
+
+.option:first-child {
+    display: none;
+}
+
+.country-cards-container {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    /* margin: 1rem; */
+    gap: 2.5rem;
+    width: 70%;
+    margin: auto;
+}
+
+.custom-card {
+    border: none;
+    background-color: var(--elements-bg);
+    color: var(--text-primary);
+    cursor: pointer;
+    border-radius: 4px;
+    width: 100%;
+    text-decoration: none;
+    transition: transform 0.2s;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 1px 1px;
+}
+
+.custom-card:hover {
+    box-shadow: none;
+    transform: scale(1.1);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 1px 1px;
+}
+
+.custom-card img {
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border: 0;
 }
 
 .content {
-  padding: 20px;
+    padding: 0 20px 40px 30px;
 }
 
-.country-detail {
-  display: block;
-  position: fixed;
-  z-index: 1;
-  padding: 100px 30%;
-  /* left: 0;
-  top: 0; */
-  width: 50%;
-  height: 40%;
-  overflow: auto;
-  /* background-color: rgb(255, 255, 255); */
-  background-color: rgba(255, 255, 255, 0.7);
+.country-info {
+    font-weight: 600;
+    margin: 0.5rem 0;
+}
+
+.country-info span {
+    font-weight: 300;
+}
+
+/* details */
+.details-main {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 80%;
+    margin: 2rem auto;
+    color: var(--text-primary);
+}
+
+.detailed-country-info {
+    width: 100%;
+}
+
+.country-details-wrapper img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+}
+
+.back-btn {
+    background-color: var(--elements-bg);
+    color: var(--text-primary);
+    padding: 0.5rem 1.5rem;
+    border-radius: 4px;
+    text-decoration: none;
+    width: fit-content;
+}
+
+.main-info,
+.sub-info {
+    margin-bottom: 2rem;
+}
+
+.main-info p,
+.sub-info p {
+    margin: 0.5rem 0;
+    font-weight: 400;
+}
+
+.border-countries {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.border-countries p {
+    font-weight: 600;
+}
+
+.main-info p span,
+.sub-info p span {
+    font-weight: 100;
+    opacity: 0.8;
+}
+
+.country-btn {
+    background-color: var(--elements-bg);
+    padding: 0.4rem 2.5rem;
+    border: 0;
+    border-radius: 4px;
+    color: var(--text-primary);
+    box-shadow: 1px 1px 1px #000;
+    transition: transform 0.2s;
+    cursor: pointer;
+}
+
+.country-btn:hover {
+    transform: scale(1.1);
+}
+
+/* media queries */
+@media screen and (min-width: 690px) {
+    .country-cards-container {
+        width: 80%;
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (min-width: 1064px) {
+    .country-cards-container {
+        width: 92%;
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .inputs-wrapper {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 4%;
+    }
+
+    .search-container {
+        width: 30%;
+        margin: 0;
+    }
+
+    .select-wrapper {
+        padding-right: 0.5rem;
+        margin: 0;
+    }
+
+    .details-main {
+        width: 92%;
+        margin: 4rem auto;
+        gap: 4rem;
+    }
+
+    .country-details-wrapper {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        place-items: center;
+        gap: 8rem;
+        padding-bottom: 0;
+        height: fit-content;
+    }
+
+    .country-info-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 4rem;
+    }
+
+    .main-info,
+    .sub-info {
+        margin-bottom: 0;
+    }
+
+    .country-details-wrapper img {
+        height: 280px;
+        width: 380px;
+    }
+}
+
+@media screen and (min-width: 1340px) {
+    .country-cards-container {
+        grid-template-columns: repeat(4, 1fr);
+    }
 }
