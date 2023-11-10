@@ -242,8 +242,7 @@ option:hover {
 
 .main-info p span,
 .sub-info p span {
-    font-weight: 100;
-    opacity: 0.8;
+    font-weight: 300;
 }
 
 .country-btn {
