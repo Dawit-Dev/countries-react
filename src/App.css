@@ -1,8 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,300;6..12,600;6..12,800&display=swap');
+
 html,
 body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 14px;
 }
 
 :root {
@@ -38,7 +42,7 @@ body {
 
 .brand {
     color: var(--text-primary);
-    font-weight: 600;
+    font-weight: 800;
 }
 
 .theme-toggler {
@@ -51,6 +55,7 @@ body {
     border: none;
     background-color: var(--elements-bg);
     color: var(--text-primary);
+    font-weight: 600;
 }
 
 .inputs-wrapper {
@@ -180,6 +185,7 @@ option:hover {
 }
 
 .country-info {
+    font-size: 1.5rem;
     font-weight: 600;
     margin: 0.5rem 0;
 }
@@ -215,6 +221,14 @@ option:hover {
     border-radius: 4px;
     text-decoration: none;
     width: fit-content;
+    font-size: 1.25rem;
+    font-weight: 800;
+    box-shadow: 1px 1px 1px #000;
+}
+
+.country-name {
+    font-weight: 800;
+    font-size: 2rem;
 }
 
 .main-info,
@@ -225,7 +239,8 @@ option:hover {
 .main-info p,
 .sub-info p {
     margin: 0.5rem 0;
-    font-weight: 400;
+    font-size: 1.25rem;
+    font-weight: 600;
 }
 
 .border-countries {
@@ -237,6 +252,7 @@ option:hover {
 }
 
 .border-countries p {
+    font-size: 1.75rem;
     font-weight: 600;
 }
 
@@ -254,6 +270,7 @@ option:hover {
     box-shadow: 1px 1px 1px #000;
     transition: transform 0.2s;
     cursor: pointer;
+    font-weight: 600;
 }
 
 .country-btn:hover {
@@ -265,6 +282,9 @@ option:hover {
     .country-cards-container {
         width: 80%;
         grid-template-columns: repeat(2, 1fr);
+    }
+    body {
+      font-size: 16px;
     }
 }
 
@@ -310,7 +330,6 @@ option:hover {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin-bottom: 4rem;
     }
 
     .main-info,
